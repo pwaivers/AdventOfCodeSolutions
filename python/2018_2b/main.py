@@ -1,5 +1,6 @@
 def main():
     assert foo('test_input.txt') == 'fgij'
+    assert foo('test_input2.txt') == 'acde'
 
     print(foo('input.txt'))
 
@@ -21,8 +22,9 @@ def hash_skip(word, skip):
     hash_value = 0
     for i in range(len(word)):
         if i == skip:
-            continue
-        hash_value = (hash_value*r_value + ord(word[i]) - ord('a')) % mod_value
+            hash_value = hash_value*r_value % mod_value
+        else:
+            hash_value = (hash_value*r_value + ord(word[i]) - ord('a') + 1) % mod_value
     
     return hash_value
 
